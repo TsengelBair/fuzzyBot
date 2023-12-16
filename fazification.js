@@ -1,79 +1,110 @@
 // Фазификация + получение значений истинности для следующего этапа (агрегирования)
 
 const classifyQuality = (value) => {
-  if (value >= 1 && value <= 4) {
-    const low = value === 4 ? 0.5 : (4 - value) / 3;
-    const medium = value === 4 ? 0.5 : Math.max(0, (value - 1) / 3);
+  if (value >= 1 && value <= 5) {
+    const low = value <= 3 ? 1 : Math.max(0, (5 - value) / 2);
+    const medium = value >= 3 && value <= 5 ? Math.max(0, (value - 3) / 2) : 0;
+    const high = 0;
+
     return {
-      Low: Math.max(low, medium),
-      Medium: Math.min(low, medium),
-      High: 0,
+      Low: low,
+      Medium: medium,
+      High: high,
     };
-  } else if (value >= 4 && value <= 7) {
+  } else if (value > 5 && value <= 7) {
+    const low = 0;
+    const medium = value <= 6 ? 1 : Math.max(0, (8 - value) / 2);
+    const high = value >= 7 ? 0.5 : 0;
+
     return {
-      Low: 0,
-      Medium: Math.max(0, Math.min((7 - value) / 3, (value - 4) / 3)),
-      High: Math.max(0, (value - 4) / 3),
+      Low: low,
+      Medium: medium,
+      High: high,
     };
-  } else if (value >= 7 && value <= 10) {
+  } else if (value > 7 && value <= 10) {
+    const low = 0;
+    const medium = 0;
+    const high = 1;
+
     return {
-      Low: 0,
-      Medium: 0,
-      High: Math.max(0, (value - 7) / 3),
+      Low: low,
+      Medium: medium,
+      High: high,
     };
   } else {
     return "недопустимое значение";
   }
 };
-
-console.log(classifyQuality(2));
 
 const classifyReviews = (value) => {
-  if (value >= 1 && value <= 4) {
-    const low = value === 4 ? 0.5 : (4 - value) / 3;
-    const medium = value === 4 ? 0.5 : Math.max(0, (value - 1) / 3);
+  if (value >= 1 && value <= 5) {
+    const low = value <= 3 ? 1 : Math.max(0, (5 - value) / 2);
+    const medium = value >= 3 && value <= 5 ? Math.max(0, (value - 3) / 2) : 0;
+    const high = 0;
+
     return {
-      Low: Math.max(low, medium),
-      Medium: Math.min(low, medium),
-      High: 0,
+      Low: low,
+      Medium: medium,
+      High: high,
     };
-  } else if (value >= 4 && value <= 7) {
+  } else if (value > 5 && value <= 7) {
+    const low = 0;
+    const medium = value <= 6 ? 1 : Math.max(0, (8 - value) / 2);
+    const high = value >= 7 ? 0.5 : 0;
+
     return {
-      Low: 0,
-      Medium: Math.max(0, Math.min((7 - value) / 3, (value - 4) / 3)),
-      High: Math.max(0, (value - 4) / 3),
+      Low: low,
+      Medium: medium,
+      High: high,
     };
-  } else if (value >= 7 && value <= 10) {
+  } else if (value > 7 && value <= 10) {
+    const low = 0;
+    const medium = 0;
+    const high = 1;
+
     return {
-      Low: 0,
-      Medium: 0,
-      High: Math.max(0, (value - 7) / 3),
+      Low: low,
+      Medium: medium,
+      High: high,
     };
   } else {
     return "недопустимое значение";
   }
 };
 
+// const membershipValues = classifyReviews(10);
+// console.log(membershipValues);
+
 const classifyDelivery = (value) => {
-  if (value >= 1 && value <= 4) {
-    const low = value === 4 ? 0.5 : (4 - value) / 3;
-    const medium = value === 4 ? 0.5 : Math.max(0, (value - 1) / 3);
+  if (value >= 1 && value <= 5) {
+    const low = value <= 3 ? 1 : Math.max(0, (5 - value) / 2);
+    const medium = value >= 3 && value <= 5 ? Math.max(0, (value - 3) / 2) : 0;
+    const high = 0;
+
     return {
-      Low: Math.max(low, medium),
-      Medium: Math.min(low, medium),
-      High: 0,
+      Low: low,
+      Medium: medium,
+      High: high,
     };
-  } else if (value >= 4 && value <= 7) {
+  } else if (value > 5 && value <= 7) {
+    const low = 0;
+    const medium = value <= 6 ? 1 : Math.max(0, (8 - value) / 2);
+    const high = value === 7 ? 0.5 : 0;
+
     return {
-      Low: 0,
-      Medium: Math.max(0, Math.min((7 - value) / 3, (value - 4) / 3)),
-      High: Math.max(0, (value - 4) / 3),
+      Low: low,
+      Medium: medium,
+      High: high,
     };
-  } else if (value >= 7 && value <= 10) {
+  } else if (value > 7 && value <= 10) {
+    const low = 0;
+    const medium = 0;
+    const high = 1;
+
     return {
-      Low: 0,
-      Medium: 0,
-      High: Math.max(0, (value - 7) / 3),
+      Low: low,
+      Medium: medium,
+      High: high,
     };
   } else {
     return "недопустимое значение";
